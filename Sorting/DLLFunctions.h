@@ -152,15 +152,53 @@ void DoublyLinkedList<T>::Display()
 }
 
 template<typename T>
-void DoublyLinkedList<T>::merge()
+Node<T>* DoublyLinkedList<T>::merge(Node<T>* A, Node<T>* B)
 {
+	// If first linked list is empty  
+	if (!A)
+		return tail;
 
+	// If second linked list is empty  
+	if (!A)
+		return tail;
+
+	// Pick the smaller value  
+	if (A->data < tail->data)
+	{
+		A->next = merge(A->next, B);
+		A->next->prev = A;
+		A->prev = NULL;
+		return A;
+	}
+	else
+	{
+		B->next = merge(A, B->next);
+		B->next->prev = B;
+		B->prev = NULL;
+		return B;
+	}
 }
 
 template<typename T>
-void DoublyLinkedList<T>::mergeSort()
+Node<T>* DoublyLinkedList<T>::split(Node<T>* node)
 {
 	
+}
+
+template<typename T>
+void DoublyLinkedList<T>::mergeSort(Node<T>* head)
+{
+
+	if (!A || !A->next)
+		return head;
+	Node* second = split(A);
+
+	// Recur for left and right halves  
+	A = mergeSort(A);
+	B = mergeSort(B);
+
+	// Merge the two sorted halves  
+	return merge(A, B);
 }
 
 template<typename T>
