@@ -73,7 +73,7 @@ int main()
 		}
 		case 6:
 		{
-			List.bubbleSort();
+			//List.mergeSort()
 		}
 		}
 	}

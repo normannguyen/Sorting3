@@ -150,35 +150,35 @@ void DoublyLinkedList<T>::Display()
 	}
 
 }
-
 template<typename T>
-Node<T>* DoublyLinkedList<T>::merge(Node<T>* A, Node<T>* B)
+Node<T>* DoublyLinkedList<T>::merge(Node<T>* aNode, Node<T>* bNode)
 {
 	// If first linked list is empty  
-	if (!A)
-		return tail;
-
-	// If second linked list is empty  
-	if (!A)
-		return tail;
-
-	// Pick the smaller value  
-	if (A->data < tail->data)
+	if (!aNode)
 	{
-		A->next = merge(A->next, B);
-		A->next->prev = A;
-		A->prev = NULL;
-		return A;
+		return bNode;
+	}
+	// If second linked list is empty  
+	if (!aNode)
+	{
+		return aNode;
+	}
+	// Pick the smaller value  
+	if (aNode->data < bNode->data)
+	{
+		aNode->next = merge(aNode->next, bNode);
+		aNode->next->prev = aNode;
+		aNode->prev = NULL;
+		return aNode;
 	}
 	else
 	{
-		B->next = merge(A, B->next);
-		B->next->prev = B;
-		B->prev = NULL;
-		return B;
+		bNode->next = merge(aNode, bNode->next);
+		bNode->next->prev = bNode;
+		bNode->prev = NULL;
+		return
 	}
 }
-
 template<typename T>
 Node<T>* DoublyLinkedList<T>::split(Node<T>* node)
 {
@@ -189,16 +189,16 @@ template<typename T>
 void DoublyLinkedList<T>::mergeSort(Node<T>* head)
 {
 
-	if (!A || !A->next)
+	if (!head || !head->next)
 		return head;
-	Node* second = split(A);
+	Node<T>* second = split(head);
 
 	// Recur for left and right halves  
-	A = mergeSort(A);
-	B = mergeSort(B);
+	head = mergeSort(head);
+	second = mergeSort(second);
 
 	// Merge the two sorted halves  
-	return merge(A, B);
+	return merge(head, second);
 }
 
 template<typename T>
