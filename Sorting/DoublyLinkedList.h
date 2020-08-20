@@ -53,9 +53,11 @@ public:
 	void Delete(T deleteData);
 	//Display the list of the nodes
 	void Display();
-	Node<T>* merge(Node<T>* A, Node<T>* );
-	Node<T>* split(Node<T>* node);
-	void mergeSort(Node<T>* head);
+	void quickSort(Node<T>* head);
+	void _quickSort(Node<T>* head, Node<T>* tail);
+	Node<T>* partition(Node<T>* head, Node<T>* tail);
+	Node<T>* lastNode(Node<T>* root);
+	void swap(Node<T>* a, Node<T>* b);
 	void bubbleSort();
 
 };

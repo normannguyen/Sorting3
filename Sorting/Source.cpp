@@ -12,6 +12,9 @@ int main()
 	//Initial is choice 
 	int choice = 0;
 	int value = 0;
+
+	clock_t begin;
+	clock_t end;
 	DoublyLinkedList<int> List = DoublyLinkedList<int>();
 	do
 	{
@@ -22,7 +25,7 @@ int main()
 		cout << "\n3. Delete";
 		cout << "\n4. Display";
 		cout << "\n5. Bubble Sort";
-		cout << "\n6. Merge Sort";
+		cout << "\n6. List Sort";
 		cout << "\n7. Exit";
 		cout << "\n\nPlease enter the # listed above: ";
 		//Cin of choosing what program/number to choose.
@@ -31,50 +34,53 @@ int main()
 		switch (choice)
 		{
 			//Find function
-		case 1:
-			cout << "Enter the value you wanted to find: ";
-			cin >> value;
-			List.Find(value);
-			break;
-			//Insert function
-		case 2:
-		{
-			cout << "Enter the value you wanted to add: ";
-			cin >> value;
-			List.Insert(value);
-			Node <int>* temp = List.head;
-			while (temp != nullptr)
+			case 1:
 			{
-				cout << temp->data << " ,";
-				temp = temp->next;
+				cout << "Enter the value you wanted to find: ";
+				cin >> value;
+				List.Find(value);
+				break;
 			}
-			break;
-		}
-		//Delete function
-		case 3:
-		{
-			cout << "Enter the value you wanted to delete: ";
-			cin >> value;
-			List.Delete(value);
-			Node <int>* temp = List.head;
-			break;
-		}
-		//Display function
-		case 4:
-		{
-			List.Display();
-			break;
-		}
-		case 5:
-		{
-			List.bubbleSort();
-			List.Display();
-			break;
-		}
-		case 6:
-		{
-			//List.mergeSort()
-		}
+			//Insert function
+			case 2:
+			{
+				cout << "Enter the value you wanted to add: ";
+				cin >> value;
+				List.Insert(value);
+				Node <int>* temp = List.head;
+				while (temp != nullptr)
+				{
+					cout << temp->data << " ,";
+					temp = temp->next;
+				}
+				break;
+			}
+			//Delete function
+			case 3:
+			{
+				cout << "Enter the value you wanted to delete: ";
+				cin >> value;
+				List.Delete(value);
+				Node <int>* temp = List.head;
+				break;
+			}
+			//Display function
+			case 4:
+			{
+				List.Display();
+				break;
+			}
+			case 5:
+			{
+				List.bubbleSort();
+				List.Display();
+				break;
+			}
+			case 6:
+			{
+				List.quickSort(List.head);
+				break;
+			}
 		}
 	}
 	//While choosing five.

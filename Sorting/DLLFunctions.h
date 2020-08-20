@@ -150,57 +150,8 @@ void DoublyLinkedList<T>::Display()
 	}
 
 }
-template<typename T>
-Node<T>* DoublyLinkedList<T>::merge(Node<T>* aNode, Node<T>* bNode)
-{
-	// If first linked list is empty  
-	if (!aNode)
-	{
-		return bNode;
-	}
-	// If second linked list is empty  
-	if (!aNode)
-	{
-		return aNode;
-	}
-	// Pick the smaller value  
-	if (aNode->data < bNode->data)
-	{
-		aNode->next = merge(aNode->next, bNode);
-		aNode->next->prev = aNode;
-		aNode->prev = NULL;
-		return aNode;
-	}
-	else
-	{
-		bNode->next = merge(aNode, bNode->next);
-		bNode->next->prev = bNode;
-		bNode->prev = NULL;
-		return
-	}
-}
-template<typename T>
-Node<T>* DoublyLinkedList<T>::split(Node<T>* node)
-{
-	
-}
 
-template<typename T>
-void DoublyLinkedList<T>::mergeSort(Node<T>* head)
-{
-
-	if (!head || !head->next)
-		return head;
-	Node<T>* second = split(head);
-
-	// Recur for left and right halves  
-	head = mergeSort(head);
-	second = mergeSort(second);
-
-	// Merge the two sorted halves  
-	return merge(head, second);
-}
-
+//Bubble Sort Done
 template<typename T>
 void DoublyLinkedList<T>::bubbleSort()
 {
@@ -219,6 +170,63 @@ void DoublyLinkedList<T>::bubbleSort()
 				current->next->data = temp;
 				Sorted = false;
 			}
+			current = current->next;
 		}
 	}
+
+}
+template<typename T>
+void DoublyLinkedList<T>::quickSort(Node<T>* head)
+{
+	Node<T>* h = lastNode(head);
+	_quickSort(head, h);
+}
+
+//Recursive
+template<typename T>
+void DoublyLinkedList<T>::_quickSort(Node<T>* head, Node<T>* tail)
+{
+	if (tail != NULL && head != tail && head != tail->next)
+	{
+		Node<T>* P = partition(head, tail);
+		_quickSort(head, P->prev);
+		_quickSort(P->next, tail);
+	}
+
+
+}
+
+template<typename T>
+Node<T>* DoublyLinkedList<T>::partition(Node<T>* head, Node<T>* tail)
+{
+	T x = tail->data;
+	Node<T>* i = head->prev;
+	for (Node<T>* j = head; j != tail; j = j->next)
+	{
+		if (j->data <= x)
+		{
+			i = (i == NULL) ? head : i->next;
+			swap(i, j);
+		}
+	}
+	i = (i == NULL) ? head : i->next;
+	swap(i, tail);
+	return i;
+}
+
+//Last Node
+template<typename T>
+Node<T>* DoublyLinkedList<T>::lastNode(Node<T>* root)
+{
+	while (root && root->next)
+		root = root->next;
+	return root;
+}
+
+template<typename T>
+void DoublyLinkedList<T>::swap(Node<T>* a, Node<T>* b)
+{
+	T t = a->data;
+	a->data = b->data;
+	b->data = t;
 }
