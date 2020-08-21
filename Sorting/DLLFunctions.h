@@ -151,18 +151,21 @@ void DoublyLinkedList<T>::Display()
 
 }
 
-//Bubble Sort Done
+//Bubble Sort 
 template<typename T>
 void DoublyLinkedList<T>::bubbleSort()
 {
+	//Set to false when you're not using the function.
 	bool Sorted = false;
-
+	//Set on while loop if the list is empty
 	while (!Sorted)
 	{
 		Sorted = true;
 		Node<T>* current = head;
+		//While loop to have the 
 		while (current->next != nullptr)
 		{
+			//
 			if (current->data > current->next->data)
 			{
 				T temp = current->data;
@@ -175,17 +178,22 @@ void DoublyLinkedList<T>::bubbleSort()
 	}
 
 }
+//Quick Sort: It goes to the last elements as the pivot which i
+//Template Generic
 template<typename T>
 void DoublyLinkedList<T>::quickSort(Node<T>* head)
 {
+	//Takes the head as the pivot
 	Node<T>* h = lastNode(head);
 	_quickSort(head, h);
 }
 
-//Recursive
+//A recursive function that's similiar to the quick sort main function that takes both
+//head and tail.
 template<typename T>
 void DoublyLinkedList<T>::_quickSort(Node<T>* head, Node<T>* tail)
 {
+	//
 	if (tail != NULL && head != tail && head != tail->next)
 	{
 		Node<T>* P = partition(head, tail);
@@ -195,34 +203,41 @@ void DoublyLinkedList<T>::_quickSort(Node<T>* head, Node<T>* tail)
 
 
 }
-
+//Partition function requires the to find the last node and pivot it which makes
+//the smallest to the biggest.
 template<typename T>
+
 Node<T>* DoublyLinkedList<T>::partition(Node<T>* head, Node<T>* tail)
 {
+	//
 	T x = tail->data;
 	Node<T>* i = head->prev;
 	for (Node<T>* j = head; j != tail; j = j->next)
 	{
+		//
 		if (j->data <= x)
 		{
 			i = (i == NULL) ? head : i->next;
 			swap(i, j);
 		}
 	}
+	//
 	i = (i == NULL) ? head : i->next;
+	//Swap occurs
 	swap(i, tail);
 	return i;
 }
 
-//Last Node
+//Last Node requires to find the last node of the list which means the tail of it.
 template<typename T>
 Node<T>* DoublyLinkedList<T>::lastNode(Node<T>* root)
 {
+	//Set in a while loop to go from node after node until it hits the end.
 	while (root && root->next)
 		root = root->next;
 	return root;
 }
-
+//Swap data in two nodes passed in as parameters
 template<typename T>
 void DoublyLinkedList<T>::swap(Node<T>* a, Node<T>* b)
 {

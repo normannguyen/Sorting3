@@ -2,6 +2,7 @@
 #include "DoublyLinkedList.h"
 #include "DLLFunctions.h"
 #include <time.h>
+#include <fstream>
 
 //Standard Library
 using namespace std;
@@ -12,9 +13,6 @@ int main()
 	//Initial is choice 
 	int choice = 0;
 	int value = 0;
-
-	clock_t begin;
-	clock_t end;
 	DoublyLinkedList<int> List = DoublyLinkedList<int>();
 	do
 	{
@@ -26,7 +24,8 @@ int main()
 		cout << "\n4. Display";
 		cout << "\n5. Bubble Sort";
 		cout << "\n6. List Sort";
-		cout << "\n7. Exit";
+		cout << "\n7. Preloaded Insert";
+		cout << "\n8. Exit";
 		cout << "\n\nPlease enter the # listed above: ";
 		//Cin of choosing what program/number to choose.
 		cin >> choice;
@@ -72,19 +71,59 @@ int main()
 			}
 			case 5:
 			{
+				//Double variable to store time.
+				double duration;
+				//Use the Bubble Sort Function
 				List.bubbleSort();
+				//Start time
+				clock_t start = clock();
 				List.Display();
+				//Calculates time.
+				duration = (clock() - start) / (double)CLOCKS_PER_SEC;
+				//Display the time duration.
+				cout << "\n\nThis took: " << duration << " seconds to complete" << endl;
 				break;
 			}
 			case 6:
 			{
+				//Double variable to store time.
+				double duration;
 				List.quickSort(List.head);
+				//Start time
+				clock_t start = clock();
+				List.Display();
+				//Calculates time.
+				duration = (clock()-start) / (double)CLOCKS_PER_SEC;
+				//Display the time duration.
+				cout << "\n\nThis took: " << duration << " seconds to complete" << endl;
+				break;
+			}
+			case 7:
+			{
+				List.Insert(18);
+				List.Insert(82);
+				List.Insert(100);
+				List.Insert(22);
+				List.Insert(33);
+				List.Insert(44);
+				List.Insert(1);
+				List.Insert(2);
+				List.Insert(44);
+				List.Insert(3);
+				List.Insert(15);
+				List.Insert(66);
+				List.Insert(3);
+				List.Insert(22);
+				List.Insert(44);
+				List.Insert(30);
+				List.Insert(555);
+				List.Insert(98);
 				break;
 			}
 		}
 	}
 	//While choosing five.
-	while (choice != 7);
+	while (choice != 8);
 	system("pause");
 	return 0;
 }

@@ -53,11 +53,17 @@ public:
 	void Delete(T deleteData);
 	//Display the list of the nodes
 	void Display();
+	//Quick Sort
 	void quickSort(Node<T>* head);
+	//Quick Sort
 	void _quickSort(Node<T>* head, Node<T>* tail);
+	//Partition
 	Node<T>* partition(Node<T>* head, Node<T>* tail);
+	//Last Node
 	Node<T>* lastNode(Node<T>* root);
+	//Swap
 	void swap(Node<T>* a, Node<T>* b);
+	//Bubble Sort
 	void bubbleSort();
 
 };
