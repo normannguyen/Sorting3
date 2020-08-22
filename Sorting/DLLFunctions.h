@@ -162,10 +162,10 @@ void DoublyLinkedList<T>::bubbleSort()
 	{
 		Sorted = true;
 		Node<T>* current = head;
-		//While loop to have the 
+		//While loop to have the data in order started
 		while (current->next != nullptr)
 		{
-			//
+			//current data is set to head which goes next
 			if (current->data > current->next->data)
 			{
 				T temp = current->data;

@@ -10,6 +10,7 @@ using namespace std;
 //Main Function is where everything is listed here.
 int main()
 {
+	srand(time(nullptr));
 	//Initial is choice 
 	int choice = 0;
 	int value = 0;
@@ -23,7 +24,7 @@ int main()
 		cout << "\n3. Delete";
 		cout << "\n4. Display";
 		cout << "\n5. Bubble Sort";
-		cout << "\n6. List Sort";
+		cout << "\n6. Quick Sort";
 		cout << "\n7. Preloaded Insert";
 		cout << "\n8. Exit";
 		cout << "\n\nPlease enter the # listed above: ";
@@ -69,6 +70,7 @@ int main()
 				List.Display();
 				break;
 			}
+			//Bubble Sort
 			case 5:
 			{
 				//Double variable to store time.
@@ -84,6 +86,7 @@ int main()
 				cout << "\n\nThis took: " << duration << " seconds to complete" << endl;
 				break;
 			}
+			//Quick Sort
 			case 6:
 			{
 				//Double variable to store time.
@@ -98,31 +101,18 @@ int main()
 				cout << "\n\nThis took: " << duration << " seconds to complete" << endl;
 				break;
 			}
+			//RNG
 			case 7:
 			{
-				List.Insert(18);
-				List.Insert(82);
-				List.Insert(100);
-				List.Insert(22);
-				List.Insert(33);
-				List.Insert(44);
-				List.Insert(1);
-				List.Insert(2);
-				List.Insert(44);
-				List.Insert(3);
-				List.Insert(15);
-				List.Insert(66);
-				List.Insert(3);
-				List.Insert(22);
-				List.Insert(44);
-				List.Insert(30);
-				List.Insert(555);
-				List.Insert(98);
+				for (int i = 0; i < 100; i++)
+				{
+					List.Insert(rand() % 1000 + 1);
+				}
 				break;
 			}
 		}
 	}
-	//While choosing five.
+	//While choosing eight.
 	while (choice != 8);
 	system("pause");
 	return 0;
